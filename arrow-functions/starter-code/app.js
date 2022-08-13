@@ -1,8 +1,10 @@
+
+
 'use strict';
 
 // STEP 1
 // This is a standard function expression. You may also be familiar with function declarations, which begin with the "function" keyword.
-const theOldWay = function(course) {
+const theOldWay = function (course) {
   return `I am currently enrolled in ${course}`;
 };
 
@@ -13,6 +15,12 @@ console.log('The old way:', theOldWay('Code 301'));
 // STEP 2
 // We can refactor our first function to use an arrow function.
 // The word "function" is removed and an arrow is added in between the parameter and the opening curly brace
+
+const newWayPratice = (course) => {
+  return `I am currently ${course} PP `;
+};
+
+console.log(newWayPratice('Code 301'));
 const theNewWay = (course) => {
   return `I am currently enrolled in ${course}`;
 };
@@ -23,6 +31,11 @@ console.log('The new way:', theNewWay('Code 301'));
 
 // STEP 3
 // When we have one parameter, we can omit the parentheses
+
+let withoutParensPra = course => {
+  return `I am without Parenspra ${course}`
+}
+console.log(withoutParensPra('301 coruse'));
 const withoutParens = course => {
   return `I am currently enrolled in ${course}`;
 };
@@ -35,6 +48,9 @@ console.log('Without parens:', withoutParens('Code 301'));
 // If the code block contains a single line of code, we can write everything on one line
 // We no longer need the curly braces and the return is implicit
 // Without an arrow function, we need to explicitly type "return"
+
+let oneLinerPra = course => `I am pratice one linear ${course}`
+console.log(oneLinerPra('301'));
 const oneLiner = course => `I cam currently enrolled in ${course}`;
 
 // TODO: Uncomment the following line of code to see the output in the browser console
@@ -44,7 +60,15 @@ console.log('As a one-liner:', oneLiner('Code 301'));
 // STEP 5
 // What if we have multiple parameters?
 // In a function expression, they all go in the parentheses
-const add = function(num1, num2) {
+
+let addPra = (num1, num2) => {
+  return `${num1} + ${num2}`
+}
+console.log(addPra(4, 5));
+
+let addPra2 = (num1, num2) => `${num1} + ${num2}`
+console.log(addPra2(5, 6));
+const add = function (num1, num2) {
   return `${num1} + ${num2} = ${num1 + num2}`;
 };
 
@@ -58,7 +82,7 @@ console.log('Let\'s do some math:', add(4, 5));
 const addOneLiner = (num1, num2) => `${num1} + ${num2} = ${num1 + num2}`;
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-console.log('Add as a one-liner:', addOneLiner(4, 5));
+// console.log('Add as a one-liner:', addOneLiner(4, 5));
 
 
 // STEP 7
@@ -76,7 +100,7 @@ console.log('Multi-line arrow function:', multiLiner('hello'));
 // STEP 8
 // The way an object is returned is different with an arrow function, too.
 // Here is how we return an object without arrow functions
-const oldObject = function(array) {
+const oldObject = function (array) {
   return {
     firstValue: array[0],
     secondValue: array[1],
@@ -86,6 +110,14 @@ const oldObject = function(array) {
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 console.log('Hello from the old object function', oldObject(['hi', 'hello', 'are you there?']));
+
+let newObjectPra = array => ({
+  firstValue: array[0],
+  secondValue: array[1],
+  thirdValue: array[2]
+})
+
+console.log(newObjectPra(['hi', 'hello', 'world']));
 
 
 // STEP 9
@@ -98,7 +130,7 @@ const newObject = array => ({
 });
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-console.log('Hello from the new object function', newObject(['hi', 'hello', 'are you there?']));
+// console.log('Hello from the new object function', newObject(['hi', 'hello', 'are you there?']));
 
 
 // STEP 10
@@ -108,55 +140,45 @@ console.log('Hello from the new object function', newObject(['hi', 'hello', 'are
 
 
 
-let sum = (a, b, c, d) => `${a} + ${b} + ${c} + ${d} = ${a + b + c + d}`;
+let sum = function (a, b, c, d) {
+  return a + b + c + d;
+};
 
-
-// const addOneLiner = (num1, num2) => `${num1} + ${num2} = ${num1 + num2}`;
+let sum2 = (a, b, c, d) => a + b + c + d
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-console.log(sum(1, 2, 3, 4));
+console.log(sum2(1, 2, 3, 4));
 
 
 let objectLit = array2 => ({
 
-  key1: 'value1',
-  key2: 'value2',
-  key3: 'value3',
-
+  key1: array2[0],
+  key2: array2[1],
+  key3: array2[2]
 });
-// const newObject = array => ({
-//   firstValue: array[0],
-//   secondValue: array[1],
-//   thirdValue: array[2]
-// });
+
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-console.log(objectLit());
+console.log(objectLit(['1','2','3']));
 
 
-let sumAndProduct = (a,b) => {
-  let sum1 = a + b;
+let sumAndProduct = (a, b) => {
+  let sum = a + b;
   let product = a * b;
-  return [sum1, product];
+  return [sum, product];
 };
-
-
-// const multiLiner = word => {
-//   word = word.toUpperCase();
-//   return word;
-// };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 console.log(sumAndProduct(3, 9));
 
 
-let message = name => `Hello, ${name}!`;
+let message =  name => `Hello, ${name}!`;
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 console.log(message('Allie'));
 
 
-let Student = function(name, age, hometown) {
+let Student = function (name, age, hometown) {
   this.name = name;
   this.age = age;
   this.hometown = hometown;
@@ -164,27 +186,45 @@ let Student = function(name, age, hometown) {
 
 let joe = new Student('Joe', 'Schmoe', 100);
 
+
+// let Student =  (name, age, hometown) => {
+//   this.name = name;
+//   this.age = age;
+//   this.hometown = hometown;
+// };
+
+// let joe = new Student('Joe', 'Schmoe', 100);
+
+
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this code to break!
-// console.log(joe);
+console.log(joe);
 
 // TODO: After viewing the previous console.log(), return the code to a working state.
 
 
 
-Student.prototype.greeting = function() {
+Student.prototype.greeting = function () {
   return `Hi, my name is ${this.name}`;
 };
 
+
+
+// Student.prototype.greeting = (name) => {
+//   return `Hi, my name is ${this.name}`;
+// };
+
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this method to break!
-// console.log(joe.greeting());
+console.log(joe.greeting());
 
 // TODO: After viewing the previous console.log(), return the code to a working state.
 
 
 
-Student.courseName = () => 'This student is enrolled in Code 301.';
+Student.courseName = function () {
+  return 'This student is enrolled in Code 301.';
+};
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 console.log(Student.courseName());
@@ -193,12 +233,12 @@ console.log(Student.courseName());
 
 // STEP 11
 // How do arrow functions affect constructor functions?
-Student.prototype.scope = function() {
+Student.prototype.scope = function () {
   console.log(this);
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// joe.scope();
+joe.scope();
 
 Student.prototype.scopeArrow = () => console.log(this);
 
@@ -207,8 +247,9 @@ joe.scopeArrow();
 
 // TODO: Write a COMMENT below to answer the following questions.
 // 1. What is "this" when joe.scope() is invoked?
-// This was refered to the whole Student object. Containing Name, age, and home town. I am not sure if that is the correct answer, however when I console loged this, I got the whole object with name replaced with Joe
+// "this" is the whole object of the window when used as arrow function. "This" on other hand will describe the object of student when used in full function way "
+//
 // 2. What is "this" when joe.scopeArrow() is invoked?
-// this refered when joe.scope was invoked was the whole window setting.
+// The whole window object comes up
 // 3. Explain why "this" is different when an arrow function is used.
-// when you are using arrow function this is not suggested because JavaScript can not recognize the object with the arrow function. This is used as the whole object when using the arrow function.
+// when using an arrow function, it is different because this can not be read when using arrow function. Because it does not specfially call the object when using arrow function while regular way knows exactly which object is refered too.
